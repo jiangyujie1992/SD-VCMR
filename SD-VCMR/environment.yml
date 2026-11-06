@@ -1,4 +1,4 @@
-name: mtvr-mml
+name: SD-VCMR
 channels:
   - pytorch
   - nvidia

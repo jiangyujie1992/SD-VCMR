@@ -35,7 +35,7 @@ CUDA 11.8. The Conda specification is the preferred GPU installation:
 
 ```bash
 conda env create -f environment.yml
-conda activate mtvr-mml
+conda activate SD-VCMR
 python -m pip install -e .
 ```
 
