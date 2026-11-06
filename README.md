@@ -1,25 +1,29 @@
 # SD-VCMR
 
-This repository is the home for the code accompanying **Beyond Text Queries: Style-Diversified Visual Cues for Video Corpus Moment Retrieval**.
+**Beyond Text Queries: Style-Diversified Visual Cues for Video Corpus Moment Retrieval**  
+Yujie Jiang, Yunzhuo Sun, and Guoxiang Zhang
 
-**Authors:** Yujie Jiang, Yunzhuo Sun, and Guoxiang Zhang
+Given a text description and a visual cue, the retrieval task is to find the video and the time interval that contain the described event. TVR-SD and ActivityNet-SD use BLIP-2 to select a frame within the annotated target interval for each text query. A low-resolution image, a scribble, and an artistic rendering are all generated from that same frame, so the event stays fixed across visual styles.
 
-## About the study
+## Source code
 
-Given a query, the system searches a collection of videos and returns the video and time interval that best match the event. We study how a visual cue can complement a short text description when selecting the video and locating the event within it.
+| Directory | What you can do |
+| --- | --- |
+| [evaluation/](evaluation/) | Score ranked predictions for video retrieval, moment localization within a given video, and moment retrieval across the corpus. |
+| [mtvr-mml/](mtvr-mml/README.md) | Train and run the MTVR/MML reference implementation on precomputed features. The package includes network definitions, configuration files, and tests. |
 
-The TVR-SD and ActivityNet-SD benchmarks pair text with three visual query styles: low-resolution images, scribbles, and artistic images. For each annotated event, the construction procedure selects a representative frame within the target interval and generates the three visual variants from that frame. This lets us compare query styles while holding the depicted event fixed.
+This repository distributes source code. Training writes checkpoints to the local run directory. The source package does not include pretrained weights, SD query-construction scripts, or the eight baseline adaptations.
 
-## Code availability
+## Evaluate predictions
 
-The [complete MTVR/MML reference source](mtvr-mml/README.md) contains the feature-level MML model, training and inference scripts, retrieval metrics, configuration, documentation, and tests. It takes precomputed features as input. The derived TVR-SD and ActivityNet-SD query datasets, their construction scripts, and the eight SD baseline adaptations are outside the scope of this package.
+With Python 3.10 or later, run the standalone evaluator from the repository root. It uses the Python standard library.
 
-The [standalone reference evaluator](evaluation/evaluate.py) scores ranked predictions for video retrieval (VR), localization within the target video (SVMR, called SD-VMR in the paper), and corpus moment retrieval (VCMR). The [metric implementation](evaluation/retrieval_metrics.py) comes from the MTVR/MML research artifact and retains its [MIT license](evaluation/LICENSE). Equivalence with the evaluator used for the table values reported in the manuscript has yet to be verified.
-
-From the repository root, run `python evaluation/evaluate.py predictions.jsonl` with Python 3.10 or later. The input contains one JSON object per query, with predictions ranked best first. The following synthetic example shows a complete row:
-
-```json
-{"query_id":"q1","ground_truth":{"video_id":"v1","start_clip":2,"end_clip":5},"video_ranking":[{"video_id":"v1"}],"moments":[{"video_id":"v1","start_clip":2,"end_clip":3}],"svmr_moments":[{"video_id":"v1","start_clip":2,"end_clip":5}]}
+```sh
+python evaluation/evaluate.py predictions.jsonl
 ```
 
-The evaluator uses zero-based, inclusive clip indices and counts a temporal match when IoU is **greater than or equal to** the threshold (0.5 or 0.7). It reports Recall@1, @10, and @100 as percentages over the supplied queries. In the example, the corpus prediction has IoU 0.5 and counts as a hit only at the lower threshold.
+Supply one ranked prediction record per query using the [prediction JSONL format](mtvr-mml/docs/DATA_FORMAT.md#prediction-jsonl). The evaluator reports Recall@1, @10, and @100. For temporal localization it uses zero-based, inclusive clip indices and counts a hit at IoU ≥ 0.5 or ≥ 0.7 for the respective metric. Corpus moment retrieval also requires the correct video ID. This is a reference scorer from MTVR/MML. Its equivalence to the scorer used for the manuscript tables has yet to be verified.
+
+## Benchmark access
+
+TVR and ActivityNet-Captions provide the source annotations. The derived TVR-SD and ActivityNet-SD visual queries are used in ongoing research. For access requests, contact Yujie Jiang at [jiangyujie921228@outlook.com](mailto:jiangyujie921228@outlook.com). Requests are considered individually.
