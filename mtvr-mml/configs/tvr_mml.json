@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "experiment": {
+    "name": "mtvr_mml_tvr",
+    "dataset": "MTVR with the official TVR splits",
+    "seeds": [42, 43, 44],
+    "notes": "Feature-level reference configuration; report mean and sample standard deviation across all three seeds."
+  },
+  "model": {
+    "video_dim": 4352,
+    "subtitle_dim": 768,
+    "query_dim": 768,
+    "proxy_dim": 2048,
+    "hidden_dim": 512,
+    "num_heads": 8,
+    "dropout": 0.1,
+    "alpha": 0.3,
+    "tau": 0.07,
+    "lambda_svmr": 25.0,
+    "beta": 1.0,
+    "boundary_kernel": 3
+  },
+  "data": {
+    "train_queries": "../data/mtvr_train_queries.jsonl",
+    "val_queries": "../data/mtvr_val_queries.jsonl",
+    "videos": "../data/tvr_videos.jsonl",
+    "expected_proxy_styles": 3
+  },
+  "train": {
+    "batch_size": 128,
+    "epochs": 9,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "gradient_clip": 1.0,
+    "num_workers": 4,
+    "candidate_sample_size": 100,
+    "candidate_keep": 10,
+    "scheduler": "constant",
+    "warmup_steps": 0,
+    "deterministic": true,
+    "drop_last": true,
+    "validate_features": true,
+    "log_every_steps": 50,
+    "checkpoint_every_epochs": 1
+  },
+  "inference": {
+    "video_batch_size": 128,
+    "top_videos": 100,
+    "spans_per_video": 10,
+    "svmr_spans": 100,
+    "max_span_length": null
+  },
+  "evaluation": {
+    "ks": [1, 10, 100],
+    "ious": [0.5, 0.7]
+  }
+}

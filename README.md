@@ -12,7 +12,9 @@ The TVR-SD and ActivityNet-SD benchmarks pair text with three visual query style
 
 ## Code availability
 
-The [reference evaluator](evaluation/evaluate.py) scores ranked predictions for video retrieval (VR), localization within the target video (SVMR, called SD-VMR in the paper), and corpus moment retrieval (VCMR). The [metric implementation](evaluation/retrieval_metrics.py) comes from the MTVR/MML research artifact and retains its [MIT license](evaluation/LICENSE). This release covers scoring only. The derived query datasets, construction scripts, and baseline adaptations are outside its scope. Equivalence with the evaluator used for the table values reported in the manuscript has yet to be verified.
+The [complete MTVR/MML reference source](mtvr-mml/README.md) contains the feature-level MML model, training and inference scripts, retrieval metrics, configuration, documentation, and tests. It takes precomputed features as input. The derived TVR-SD and ActivityNet-SD query datasets, their construction scripts, and the eight SD baseline adaptations are outside the scope of this package.
+
+The [standalone reference evaluator](evaluation/evaluate.py) scores ranked predictions for video retrieval (VR), localization within the target video (SVMR, called SD-VMR in the paper), and corpus moment retrieval (VCMR). The [metric implementation](evaluation/retrieval_metrics.py) comes from the MTVR/MML research artifact and retains its [MIT license](evaluation/LICENSE). Equivalence with the evaluator used for the table values reported in the manuscript has yet to be verified.
 
 From the repository root, run `python evaluation/evaluate.py predictions.jsonl` with Python 3.10 or later. The input contains one JSON object per query, with predictions ranked best first. The following synthetic example shows a complete row:
 
