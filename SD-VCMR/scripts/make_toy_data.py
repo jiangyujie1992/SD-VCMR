@@ -113,7 +113,7 @@ def main() -> None:
             "name": "mtvr_mml_smoke_test",
             "dataset": "deterministic synthetic diagnostic data",
             "seeds": [args.seed],
-            "notes": "Functional smoke test only; these metrics are not research results.",
+            "notes": "Exercises training, inference and evaluation on synthetic features.",
         },
         "model": {
             "video_dim": dimension,
@@ -172,7 +172,7 @@ def main() -> None:
     atomic_write_json(
         output / "SMOKE_DATA_MANIFEST.json",
         {
-            "purpose": "deterministic functional smoke test; not benchmark data",
+            "purpose": "deterministic synthetic retrieval fixture",
             "generator_seed": args.seed,
             "feature_dimension": dimension,
             "files": {

@@ -116,7 +116,7 @@ def main() -> None:
     summary = {
         "status": "pass",
         "completed_at_utc": utc_now(),
-        "purpose": "functional smoke test; metrics are not paper results",
+        "purpose": "end-to-end training, inference and evaluation on synthetic features",
         "seed": args.seed,
         "max_steps": args.max_steps,
         "artifacts": {

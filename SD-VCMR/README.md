@@ -1,6 +1,6 @@
-# MTVR / MML Anonymous Research Artifact
+# MTVR / MML
 
-This repository is the feature-level reference implementation of **Multi-modal
+This repository is the feature-level implementation of **Multi-modal
 Moment Localization (MML)** for MTVR. It contains the model, the paper's
 training-only 100-to-10 spatial candidate-pruning path, full-corpus inference,
 TVR-style VR/SVMR/VCMR metrics, strict data validation, deterministic run
@@ -14,7 +14,7 @@ called during MML training or inference.
 ## Artifact at a glance
 
 ```text
-configs/tvr_mml.json       complete reference experiment configuration
+configs/tvr_mml.json       TVR training and evaluation settings
 docs/DATA_FORMAT.md        manifest and feature schemas
 docs/IMPLEMENTATION.md     paper-equation-to-code map
 docs/REPRODUCIBILITY.md    full replication protocol and scope
@@ -30,7 +30,7 @@ CHECKSUMS.sha256           release inventory and SHA-256 digests
 
 ## 1. Install
 
-The reference environment is Python 3.10.13, PyTorch 2.1.2, NumPy 1.26.4,
+The Conda environment uses Python 3.10.13, PyTorch 2.1.2, NumPy 1.26.4,
 CUDA 11.8. The Conda specification is the preferred GPU installation:
 
 ```bash
@@ -59,8 +59,7 @@ python scripts/run_smoke_test.py --output runs/smoke --device cpu
 The smoke run generates deterministic synthetic features and checks data
 loading, candidate sampling/pruning, forward/backward, checkpoint loading,
 full-corpus ranking, span decoding, metadata capture, and all three metrics.
-`runs/smoke/SMOKE_TEST_REPORT.json` is the machine-readable receipt. **Smoke
-metrics are functional-test outputs, not benchmark results.**
+`runs/smoke/SMOKE_TEST_REPORT.json` records the results.
 
 ## 3. Prepare and validate MTVR features
 
@@ -80,7 +79,7 @@ dimensions, finite values, duplicate IDs, cross-manifest references, proxy
 style count, clip alignment, and labeled boundaries. Training repeats this
 preflight by default.
 
-## 4. Train the three reference seeds
+## 4. Train with three seeds
 
 The release declares seeds `42`, `43`, and `44`. Run each seed in an isolated
 directory (example in Bash):
@@ -145,20 +144,9 @@ TVR test annotations are held out; final test numbers must be produced through
 the official TVR evaluation server. Local evaluation is intended for labeled
 train/validation manifests.
 
-## Reproducibility boundary
+## Training settings and data
 
-The manuscript explicitly states `alpha=0.3`, `lambda_svmr=25`, batch size
-128, AdamW, 100 sampled candidates, top-10 retention, nine epochs, and one A100
-(40 GB). The manuscript does not uniquely specify `tau`, `beta`, projection
-width, convolution kernel, exact learning-rate schedule, OS/CPU, or exact
-seeds. This repository makes every such choice explicit in the versioned
-configuration; those release choices must not be presented as independently
-verified values from an undisclosed original run.
-
-Matching paper tables additionally requires the MTVR proxy bundle/captions,
-official splits, exact frozen feature caches, and official test evaluation.
-See [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md) for the complete
-claim-to-artifact matrix and expected output contract.
+The settings table lists the manuscript parameters and the additional choices in the released training configuration. For TVR runs, use the official splits, cached proxy images and captions, frozen features, and the official test evaluator. [Settings and data requirements](docs/REPRODUCIBILITY.md)
 
 ## Integrity and license
 

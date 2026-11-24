@@ -331,7 +331,7 @@ class MML(nn.Module):
         keep: int,
         generator: torch.Generator,
     ) -> dict[str, torch.Tensor]:
-        """Paper training path: sample candidates, spatially prune, then attend.
+        """Sample candidates and prune by spatial score before cross-attention.
 
         The candidate pool is the in-batch video set from Eq. (14). For every
         query, at most ``sample_size`` candidates are sampled (always including

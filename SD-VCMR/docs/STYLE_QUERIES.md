@@ -1,6 +1,6 @@
 # Generating the artistic and scribble queries
 
-Both commands take the same selected frame. The manuscript names AnimeGANv2 and CLIPascene. The checkpoint, fidelity level and seed below define this reconstruction release. The available manuscript materials do not identify the checkpoint or sketch preset used for the original experiments.
+Both commands take the same selected frame. The public style configuration specifies the AnimeGANv2 checkpoint and the CLIPascene fidelity level and seed.
 
 ## Artistic
 

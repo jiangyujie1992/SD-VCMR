@@ -21,7 +21,7 @@ the supplementary material.
 
 ## Training-only spatial pruning
 
-`MML.forward_pruned` is the actual training entry point used by
+`MML.forward_pruned` is the training entry point used by
 `scripts/train.py`:
 
 1. The shuffled DataLoader batch is the in-batch candidate pool of Eq. (14).
@@ -37,11 +37,11 @@ the supplementary material.
    Multiple batch entries for the same video remain valid positives.
 7. Boundary loss is computed from the forcibly retained paired video.
 
-With `configs/tvr_mml.json`, the intended full batch is 128, 100 candidates are
+With `configs/tvr_mml.json`, the full batch is 128, 100 candidates are
 sampled, and 10 are retained. The final partial batch is dropped to preserve
-that protocol. The smoke configuration deliberately uses 8-to-4 pruning.
+that protocol. The smoke configuration uses 8-to-4 pruning.
 
-## Inference differs intentionally
+## Full-corpus inference
 
 `score_corpus` iterates over every video and calls the contextualized Eq. (13)
 score. No training candidate mask is used. Only after full-corpus VR ranking
@@ -49,9 +49,6 @@ does `predict_query` select the configured top videos for boundary decoding.
 Candidate localization is chunked by `video_batch_size` to bound memory without
 changing scores.
 
-## Frozen-feature boundary
+## Frozen features
 
-The four `FeatureProjector` modules are trainable adapters over cached features;
-the upstream ResNet, SlowFast, RoBERTa, BLIP2, and MiniGPT-v2 models are not
-part of this online graph. This separation is enforced by the `.npy` data
-contract rather than hidden runtime downloads.
+The four trainable `FeatureProjector` modules read cached `.npy` features. ResNet, SlowFast, RoBERTa, BLIP2 and MiniGPT-v2 run during offline preprocessing.

@@ -4,7 +4,7 @@
     "name": "mtvr_mml_tvr",
     "dataset": "MTVR with the official TVR splits",
     "seeds": [42, 43, 44],
-    "notes": "Feature-level reference configuration; report mean and sample standard deviation across all three seeds."
+    "notes": "Report the mean and sample standard deviation across the three configured seeds."
   },
   "model": {
     "video_dim": 4352,

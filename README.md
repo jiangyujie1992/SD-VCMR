@@ -10,7 +10,7 @@ Given a text description and a visual cue, the retrieval task is to find the vid
 | Directory | What you can do |
 | --- | --- |
 | [evaluation/](evaluation/) | Score ranked predictions for video retrieval, moment localization within a given video, and moment retrieval across the corpus. |
-| [SD-VCMR/](SD-VCMR/README.md) | Train and run the MTVR/MML reference implementation on precomputed features. The package includes network definitions, configuration files, and tests. |
+| [SD-VCMR/](SD-VCMR/README.md) | Train and run MTVR/MML on precomputed features. The package includes network definitions, configuration files, and tests. |
 
 For frame selection, generation of the three image styles, and ResNet feature extraction, see the [visual query construction guide](SD-VCMR/docs/VISUAL_QUERIES.md). Training writes checkpoints to the local run directory. Obtain source videos and third-party model weights from their providers.
 
@@ -22,7 +22,7 @@ With Python 3.10 or later, run the standalone evaluator from the repository root
 python evaluation/evaluate.py predictions.jsonl
 ```
 
-Supply one ranked prediction record per query using the [prediction JSONL format](SD-VCMR/docs/DATA_FORMAT.md#prediction-jsonl). The evaluator reports Recall@1, @10, and @100. For temporal localization it uses zero-based, inclusive clip indices and counts a hit at IoU ≥ 0.5 or ≥ 0.7 for the respective metric. Corpus moment retrieval also requires the correct video ID. This is a reference scorer from MTVR/MML. Its equivalence to the scorer used for the manuscript tables has yet to be verified.
+Supply one ranked prediction record per query using the [prediction JSONL format](SD-VCMR/docs/DATA_FORMAT.md#prediction-jsonl). The evaluator reports Recall@1, @10, and @100. For temporal localization it uses zero-based, inclusive clip indices and counts a hit at IoU ≥ 0.5 or ≥ 0.7 for the respective metric. Corpus moment retrieval also requires the correct video ID. The [validation record](SD-VCMR/docs/tvr_45252_validation.json) includes a controlled ranking and its scores under this protocol.
 
 ## Benchmark access
 

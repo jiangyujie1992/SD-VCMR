@@ -1,1 +1,1 @@
-"""Command-line entry points for the anonymous MTVR/MML artifact."""
+"""Command-line tools for MTVR data preparation and MML retrieval."""

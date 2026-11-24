@@ -31,7 +31,7 @@ EXCLUDED_DIRECTORIES = {
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Verify or regenerate the anonymous artifact inventory"
+        description="Verify or regenerate the package checksum inventory"
     )
     parser.add_argument(
         "--write-checksums",

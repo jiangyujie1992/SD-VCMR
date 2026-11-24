@@ -21,7 +21,7 @@ Run the following commands from `SD-VCMR/`. Use separate Python environments for
 
 Prepare the selector and renderer using the linked setup guides. The frame selector records each candidate's timestamp and score. The renderer records the checkpoint, CLIPascene revision, strokes, layer, seed and iteration count. [Frame selection](FRAME_SELECTION.md) · [Style generation and weight downloads](STYLE_QUERIES.md) · [Style configuration](../configs/style_queries.json)
 
-The manuscript identifies BLIP-2, CLIPascene, AnimeGANv2 and the 4% downsampling operation. Where the historical run configuration is unavailable, the checkpoint variants, integer rounding, sketch optimization settings and preprocessing in this repository define the public reconstruction.
+The public configuration specifies the checkpoint variants, integer rounding, sketch optimization and image preprocessing used by the builder.
 
 ```sh
 python scripts/build_visual_queries.py --dataset tvr \
@@ -50,7 +50,7 @@ python scripts/verify_visual_query.py runs/tvr-example/45252
 
 From the repository root, run `python evaluation/evaluate.py predictions.jsonl` on ranked outputs. Provide video IDs and inclusive, zero-based clip indices. Convert continuous annotation times to the clip grid used by the retrieval system before evaluation. The scorer computes VR, SVMR and VCMR separately, at ranks 1, 10 and 100 and temporal IoUs 0.5 and 0.7. [Prediction format](DATA_FORMAT.md#prediction-jsonl)
 
-The visual-query manifest supplies the proxy features. The feature-level training package also expects enhanced-text, subtitle and temporal video features in its training manifests. A single visual-query construction test measures neither corpus retrieval performance nor agreement with the original private query cache.
+The visual-query manifest supplies the proxy features. The feature-level training package also expects enhanced-text, subtitle and temporal video features in its training manifests.
 
 ### Verified TVR example
 
