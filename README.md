@@ -12,7 +12,7 @@ Given a text description and a visual cue, the retrieval task is to find the vid
 | [evaluation/](evaluation/) | Score ranked predictions for video retrieval, moment localization within a given video, and moment retrieval across the corpus. |
 | [SD-VCMR/](SD-VCMR/README.md) | Train and run the MTVR/MML reference implementation on precomputed features. The package includes network definitions, configuration files, and tests. |
 
-This repository distributes source code. Training writes checkpoints to the local run directory. The source package does not include pretrained weights, SD query-construction scripts, or the eight baseline adaptations.
+For frame selection, generation of the three image styles, and ResNet feature extraction, see the [visual query construction guide](SD-VCMR/docs/VISUAL_QUERIES.md). Training writes checkpoints to the local run directory. Obtain source videos and third-party model weights from their providers.
 
 ## Evaluate predictions
 

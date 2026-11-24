@@ -1,0 +1,26 @@
+{
+  "artistic": {
+    "repository": "https://github.com/TachibanaYoshino/AnimeGANv2",
+    "revision": "724b5ce75185c2e838d30c9077dbb967ab034254",
+    "checkpoint": "pb_and_onnx_model/Shinkai_53.onnx",
+    "sha256": "4b57475c2bdc71348a52e6d495abc9e346242619fdb0e519a2957c7c7885c4bb",
+    "min_dimension": 256,
+    "stride": 32
+  },
+  "scribble": {
+    "repository": "https://github.com/yael-vinker/SceneSketch",
+    "revision": "2377feb466cd14fa56695b25628222e446a37b36",
+    "u2net_path": "U2Net_/saved_models/u2net.pth",
+    "u2net_url": "https://huggingface.co/akhaliq/CLIPasso/resolve/8f40d029cb203b6cba2554779bf199f82835eb79/u2net.pth",
+    "u2net_sha256": "10025a17f49cd3208afc342b589890e402ee63123d6f2d289a4a0903695cce58",
+    "clip_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "square_size": 224,
+    "layer": 4,
+    "num_iter": 1501,
+    "strokes": 64,
+    "seed": 0,
+    "eval_interval": 50,
+    "min_eval_iter": 400,
+    "lr": 0.0001
+  }
+}

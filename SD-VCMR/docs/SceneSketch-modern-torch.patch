@@ -1,0 +1,26 @@
+diff --git a/CLIP_/clip/auxilary.py b/CLIP_/clip/auxilary.py
+index 7be58eb..35deed0 100644
+--- a/CLIP_/clip/auxilary.py
++++ b/CLIP_/clip/auxilary.py
+@@ -13,7 +13,7 @@ from torch.nn import functional as F
+ # We define this function as _pad because it takes an argument
+ # named pad, which clobbers the recursive reference to the pad
+ # function needed for __torch_function__ support
+-pad = F._pad
++pad = F.pad
+ 
+ # This class exists solely for Transformer; it has an annotation stating
+ # that bias is never None, which appeases TorchScript
+diff --git a/sketch_utils.py b/sketch_utils.py
+index 18e0e9c..6a84973 100644
+--- a/sketch_utils.py
++++ b/sketch_utils.py
+@@ -348,7 +348,7 @@ def get_mask_u2net(args, pil_im):
+ 
+     with torch.no_grad():
+         input_im_trans = input_im_trans.type(torch.FloatTensor)
+-        d1, d2, d3, d4, d5, d6, d7 = net(input_im_trans.cuda())
++        d1, d2, d3, d4, d5, d6, d7 = net(input_im_trans.to(args.device))
+ 
+     pred = d1[:, 0, :, :]
+     pred = (pred - pred.min()) / (pred.max() - pred.min())

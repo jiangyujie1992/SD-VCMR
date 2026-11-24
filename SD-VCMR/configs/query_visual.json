@@ -1,0 +1,21 @@
+{
+  "low_resolution": {
+    "dimension_divisor": 5,
+    "rounding": "nearest integer, minimum 1",
+    "interpolation": "PIL.Image.Resampling.BICUBIC"
+  },
+  "encoder": {
+    "architecture": "torchvision.models.resnet152",
+    "weights": "IMAGENET1K_V1",
+    "url": "https://download.pytorch.org/models/resnet152-394f9c45.pth",
+    "sha256": "394f9c45966e3651a89bbb78a48410a6755854ce4a5ab64927cf1c7247f85e58",
+    "short_edge_resize": 256,
+    "center_crop": 224,
+    "resize_interpolation": "bilinear",
+    "mean": [0.485, 0.456, 0.406],
+    "std": [0.229, 0.224, 0.225],
+    "output": "global average pool, flattened, float32",
+    "dimension": 2048
+  },
+  "proxy_row_order": ["scribble", "lowres", "artistic"]
+}

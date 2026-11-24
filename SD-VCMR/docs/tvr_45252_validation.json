@@ -1,0 +1,283 @@
+{
+  "scope": "One TVR train query, reconstruction smoke test",
+  "annotation_source": "https://raw.githubusercontent.com/jayleicn/TVRetrieval/7e819959a1213731c6bfa8857098885c7a474e88/data/tvr_train_release.jsonl",
+  "source_jpegs": 257,
+  "concatenated_jpeg_sha256": "07bbfcf4e1d4e9ac5281676c5634a0287b328d924737ef29f2b8cfea6e3eb451",
+  "selected_source_packet": {
+    "source_jpeg_name": "00221.jpg",
+    "source_jpeg_sha256": "f2180bcd06f22623713f006ad7aaf037efd4983537748b87d16d17b760099c0d",
+    "verified_selected_packet_equals_original": true,
+    "selected_png_sha256": "3c3db66e89262bc6a06f6e238a06abb30b01cf72de3ea4f27864d5b1ac05a77b",
+    "rgb_mean_absolute_difference_between_Pillow_JPEG_and_PyAV_output": 0.7422641782407408,
+    "note": "JPEG packet matches exactly; Pillow and PyAV use distinct RGB decoding implementations."
+  },
+  "selection": {
+    "vid_name": "castle_s01e01_seg02_clip_01",
+    "desc_id": 45252,
+    "desc": "Castle drinks his whole glass of champagne as Gina walks away.",
+    "ts": [
+      71,
+      74.4
+    ],
+    "sampling_fps": 3,
+    "model": "blip2_feature_extractor/pretrain",
+    "device": "cpu",
+    "initialization": "file-backed",
+    "model_state_tensors": 857,
+    "candidates": [
+      {
+        "time_s": 71.0,
+        "cosine": 0.3137763440608978
+      },
+      {
+        "time_s": 71.333,
+        "cosine": 0.3258660137653351
+      },
+      {
+        "time_s": 71.667,
+        "cosine": 0.358867347240448
+      },
+      {
+        "time_s": 72.0,
+        "cosine": 0.3472505211830139
+      },
+      {
+        "time_s": 72.333,
+        "cosine": 0.3648774027824402
+      },
+      {
+        "time_s": 72.667,
+        "cosine": 0.39546066522598267
+      },
+      {
+        "time_s": 73.0,
+        "cosine": 0.45808839797973633
+      },
+      {
+        "time_s": 73.333,
+        "cosine": 0.4945427477359772
+      },
+      {
+        "time_s": 73.667,
+        "cosine": 0.45272091031074524
+      },
+      {
+        "time_s": 74.0,
+        "cosine": 0.47268086671829224
+      },
+      {
+        "time_s": 74.333,
+        "cosine": 0.46534785628318787
+      }
+    ],
+    "selected_index": 7,
+    "selected_time_s": 73.333,
+    "source_sha256": "6ab1f85dd7043a77e2ba63ebd45c47e37c3d5da87c9d5b27bc4787df8dbadbf1",
+    "frame_sha256": "3c3db66e89262bc6a06f6e238a06abb30b01cf72de3ea4f27864d5b1ac05a77b"
+  },
+  "visual_query": {
+    "query_id": 45252,
+    "video_id": "castle_s01e01_seg02_clip_01",
+    "interval_s": [
+      71,
+      74.4
+    ],
+    "candidates": 11,
+    "selected": {
+      "time_s": 73.333,
+      "cosine": 0.4945427477359772
+    },
+    "input_size": [
+      640,
+      360
+    ],
+    "downsampled_size": [
+      128,
+      72
+    ],
+    "frame_sha256": "3c3db66e89262bc6a06f6e238a06abb30b01cf72de3ea4f27864d5b1ac05a77b",
+    "outputs": {
+      "scribble": {
+        "size": [
+          224,
+          224
+        ],
+        "sha256": "a6f7252971cb2c27edd20f41f813c2de9ab2f9166d19a42d5eeac7ef2cdc7a3a"
+      },
+      "lowres": {
+        "size": [
+          640,
+          360
+        ],
+        "sha256": "b8d0bb3301037654242d34a8729eb1b5ce4d9b5689bc1c8b78127a51a9aa36fc"
+      },
+      "artistic": {
+        "size": [
+          640,
+          360
+        ],
+        "sha256": "5b401fe5e6e4bc179b35a86a848e8de09b18e30066b56f454e450690468f90e3"
+      },
+      "proxy": {
+        "shape": [
+          3,
+          2048
+        ],
+        "sha256": "eb6a1f15d7c47bad1aef8bb58c7d2efa24ab0f0d75f69b07589762b2733eafdb"
+      },
+      "selected_frame_feature": {
+        "shape": [
+          1,
+          2048
+        ],
+        "sha256": "fcb79e13939574206be172e0e07a36292aeee8de6e95146d8fdfc70cb4d6825a"
+      }
+    }
+  },
+  "artistic": {
+    "style": "artistic",
+    "settings": {
+      "repository": "https://github.com/TachibanaYoshino/AnimeGANv2",
+      "revision": "724b5ce75185c2e838d30c9077dbb967ab034254",
+      "checkpoint": "pb_and_onnx_model/Shinkai_53.onnx",
+      "sha256": "4b57475c2bdc71348a52e6d495abc9e346242619fdb0e519a2957c7c7885c4bb",
+      "min_dimension": 256,
+      "stride": 32
+    },
+    "model_input_size": [
+      640,
+      352
+    ],
+    "onnxruntime": "1.32.0",
+    "opencv": "4.13.0",
+    "provider": "CPUExecutionProvider",
+    "input_size": [
+      640,
+      360
+    ],
+    "output_size": [
+      640,
+      360
+    ],
+    "input_sha256": "3c3db66e89262bc6a06f6e238a06abb30b01cf72de3ea4f27864d5b1ac05a77b",
+    "output_sha256": "5b401fe5e6e4bc179b35a86a848e8de09b18e30066b56f454e450690468f90e3"
+  },
+  "scribble": {
+    "style": "scribble",
+    "settings": {
+      "repository": "https://github.com/yael-vinker/SceneSketch",
+      "revision": "2377feb466cd14fa56695b25628222e446a37b36",
+      "u2net_path": "U2Net_/saved_models/u2net.pth",
+      "u2net_url": "https://huggingface.co/akhaliq/CLIPasso/resolve/8f40d029cb203b6cba2554779bf199f82835eb79/u2net.pth",
+      "u2net_sha256": "10025a17f49cd3208afc342b589890e402ee63123d6f2d289a4a0903695cce58",
+      "clip_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+      "square_size": 224,
+      "layer": 4,
+      "num_iter": 1501,
+      "strokes": 64,
+      "seed": 0,
+      "eval_interval": 50,
+      "min_eval_iter": 400,
+      "lr": 0.0001
+    },
+    "svg_sha256": "2a3bae247221bde46bf5ba26ff45deb393a27ec64ba00565bfab5358a04919c0",
+    "cairosvg": "2.9.1",
+    "scene_device": "cuda",
+    "runtime": {
+      "python": "3.10.12",
+      "torch": "2.0.1+cu118",
+      "torchvision": "0.15.2+cu118",
+      "cuda": "11.8",
+      "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU"
+    },
+    "upstream_diff_sha256": "494427abda6d42bd17fe4af176ea6242af67cf2e65e253b5dccd3066c926e96c",
+    "input_size": [
+      640,
+      360
+    ],
+    "output_size": [
+      224,
+      224
+    ],
+    "input_sha256": "3c3db66e89262bc6a06f6e238a06abb30b01cf72de3ea4f27864d5b1ac05a77b",
+    "output_sha256": "a6f7252971cb2c27edd20f41f813c2de9ab2f9166d19a42d5eeac7ef2cdc7a3a"
+  },
+  "visual_encoder": {
+    "name": "torchvision.models.resnet152",
+    "weights": "IMAGENET1K_V1",
+    "torch": "2.10.0+cpu",
+    "torchvision": "0.25.0+cpu",
+    "Pillow": "12.0.0",
+    "numpy": "2.3.4"
+  },
+  "standalone_evaluation": {
+    "purpose": "Controlled ranking fixture to check index and IoU conventions",
+    "prediction": {
+      "query_id": 45252,
+      "ground_truth": {
+        "video_id": "castle_s01e01_seg02_clip_01",
+        "start_clip": 47,
+        "end_clip": 49
+      },
+      "video_ranking": [
+        {
+          "video_id": "controlled_distractor"
+        },
+        {
+          "video_id": "castle_s01e01_seg02_clip_01"
+        }
+      ],
+      "moments": [
+        {
+          "video_id": "controlled_distractor",
+          "start_clip": 47,
+          "end_clip": 49
+        },
+        {
+          "video_id": "castle_s01e01_seg02_clip_01",
+          "start_clip": 47,
+          "end_clip": 49
+        }
+      ],
+      "svmr_moments": [
+        {
+          "video_id": "castle_s01e01_seg02_clip_01",
+          "start_clip": 47,
+          "end_clip": 48
+        }
+      ]
+    },
+    "output": {
+      "queries": 1,
+      "protocol": {
+        "clip_boundaries": "inclusive_zero_based",
+        "ks": [
+          1,
+          10,
+          100
+        ],
+        "ious": [
+          0.5,
+          0.7
+        ]
+      },
+      "metrics_percent": {
+        "SVMR_R@100_IoU0.5": 100.0,
+        "SVMR_R@100_IoU0.7": 0.0,
+        "SVMR_R@10_IoU0.5": 100.0,
+        "SVMR_R@10_IoU0.7": 0.0,
+        "SVMR_R@1_IoU0.5": 100.0,
+        "SVMR_R@1_IoU0.7": 0.0,
+        "VCMR_R@100_IoU0.5": 100.0,
+        "VCMR_R@100_IoU0.7": 100.0,
+        "VCMR_R@10_IoU0.5": 100.0,
+        "VCMR_R@10_IoU0.7": 100.0,
+        "VCMR_R@1_IoU0.5": 0.0,
+        "VCMR_R@1_IoU0.7": 0.0,
+        "VR_R@1": 0.0,
+        "VR_R@10": 100.0,
+        "VR_R@100": 100.0
+      }
+    }
+  }
+}
